@@ -26,7 +26,7 @@
    but is experimental and can take a lot of time to actually refresh.
    ```bash
    cd bonus && make
-   ./my_top -U <user> -d <delay in seconds> -n <number of frames before closing the interface>
+   ./my_top -U <user> -d <refresh delay> -n <number of frames before closing the interface>
 
 ## Clean the repository
 1. When you're done using the command, execute the following to clean the directory :
@@ -34,5 +34,5 @@
    make fclean
 
 ## About the project
-1. It uses a Terminal User Interface with the Ncurses library, in C langage.
+1. It uses a Terminal User Interface with the Ncurses library, in C language.
 2. Done alone within 2 weeks.
