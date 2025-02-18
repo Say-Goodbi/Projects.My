@@ -23,6 +23,7 @@
    ```bash
    ./my_radar -h
 2. Files that can be used to run the script are located within the "./examples/" directory :
+   ```bash
    ./my_radar examples/15000_planes_35_towers.rdr
 
 ## Clean the repository
