@@ -18,8 +18,10 @@ int my_strncmp(const char *s1, const char *s2, size_t n)
         return 0 - s2[0];
     if (!s2)
         return s1[0];
-    while (s1[i] == s2[i] &&
-        s1[i] != '\0' && s2[i] != '\0' && i < n)
+    while (s1[i] != '\0' && s2[i] != '\0' && i < n) {
+        if (s1[i] != s2[i])
+            break;
         i++;
+    }
     return s1[i] - s2[i];
 }

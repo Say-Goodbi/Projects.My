@@ -16,14 +16,14 @@ bool delete_in_list(llist_t **begin, void const *ref,
     if (!previous)
         return false;
     if (cmp_fct(previous->data, ref) == 0) {
-        freef("f f", previous, previous->data);
+        freef("f f", &previous->data, &previous);
         *begin = actual;
         return true;
     }
     while (actual) {
         if (cmp_fct(actual->data, ref) == 0) {
             previous->next = actual->next;
-            freef("f f", actual, actual->data);
+            freef("f f", &actual->data, &actual);
             return true;
         }
         previous = actual;

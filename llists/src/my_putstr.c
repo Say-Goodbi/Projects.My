@@ -7,9 +7,9 @@
 
 #include "llists.h"
 
-void my_putstr(char *str)
+void my_putstr(int fd, char *str)
 {
     if (!str)
         return;
-    write(1, str, my_strlen(str));
+    write(fd, str, my_strlen(str));
 }

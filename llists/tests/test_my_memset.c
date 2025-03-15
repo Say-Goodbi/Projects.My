@@ -33,7 +33,7 @@ Test(my_memset, multiple_memset)
     if (ptr == NULL)
         return;
     my_memset(ptr, 15, sizeof(int) * 5);
-    for (int i = 0; i < sizeof(int) * 5; i++)
+    for (size_t i = 0; i < sizeof(int) * 5; i++)
         cr_assert_eq(ptr[i], 15);
     free(ptr);
 }

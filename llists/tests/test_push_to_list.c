@@ -19,10 +19,20 @@ Test(push_to_list, simple_pushes, .init = redirect_all_std)
     destroy_list(list, NULL);
 }
 
-Test(push_to_list, empty_destination, .init = redirect_all_std)
+Test(push_to_list, null_list_pointer)
 {
     llist_t **list = NULL;
 
     push_to_list(list, "data");
     cr_assert(list == NULL);
+}
+
+Test(push_to_list, failed_alloc_push_to_list)
+{
+    llist_t *list = NULL;
+
+    calloc_failure_countdown(true, 0);
+    push_to_list(&list, "data");
+    cr_assert(list == NULL);
+    calloc_failure_countdown(true, -1);
 }

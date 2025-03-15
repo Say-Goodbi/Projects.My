@@ -11,7 +11,7 @@
     #include <criterion/redirect.h>
     #include <criterion/logging.h>
     #include <stdlib.h>
-    #include "../llists.h"
+    #include "llists.h"
     #include <string.h>
 
 void redirect_all_std(void);

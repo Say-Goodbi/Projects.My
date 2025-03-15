@@ -42,18 +42,18 @@ void switchfree(void **pfname)
         *pfname = ((fflag_t *)tmp->data)->fct;
 }
 
-void superfree(char *sformat, void *tofree)
+void superfree(char *sformat, void **target_ptr)
 {
     llist_t *freenames = NULL;
 
-    if (!tofree)
+    if (!target_ptr || !(*target_ptr))
         return;
     freenames = str_to_word_list(sformat, ":");
     if (!freenames)
         return;
     my_map(freenames, &switchfree);
     append_to_list(&freenames, NULL);
-    ((mfree_t)(freenames->data))(freenames->next, tofree);
+    ((mfree_t)(freenames->data))(freenames->next, target_ptr);
     destroy_list(freenames, NULL);
 }
 
@@ -66,7 +66,7 @@ void freef(char *format, ...)
     va_start(ap, format);
     elems = str_to_word_array(format, " ");
     while (elems && *(elems + i)) {
-        superfree(elems[i], va_arg(ap, void *));
+        superfree(elems[i], va_arg(ap, void **));
         free(elems[i]);
         i++;
     }

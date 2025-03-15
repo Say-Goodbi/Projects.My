@@ -6,7 +6,7 @@
 */
 
 #include "llists.h"
-
+#include <stdio.h>
 void push_to_list(llist_t **begin, void *data)
 {
     llist_t *node = my_calloc(1, sizeof(llist_t));

@@ -42,7 +42,6 @@ Test(delete_in_list, del_match_further)
 {
     llist_t *list = NULL;
     char *v1 = "1";
-    char *v2 = "2";
 
     append_to_list(&list, "1");
     cr_assert_eq((char *)list->data, v1);

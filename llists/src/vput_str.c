@@ -7,7 +7,7 @@
 
 #include "llists.h"
 
-void vput_str(int nb, ...)
+void vput_str(int fd, int nb, ...)
 {
     char *tmp = NULL;
     va_list ap;
@@ -15,7 +15,7 @@ void vput_str(int nb, ...)
     va_start(ap, nb);
     while (nb > 0) {
         tmp = va_arg(ap, char *);
-        my_putstr(tmp);
+        my_putstr(fd, tmp);
         nb--;
     }
     va_end(ap);

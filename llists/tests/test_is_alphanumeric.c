@@ -44,4 +44,7 @@ Test(is_alphanumeric, not_alphanumeric)
     cr_assert(!is_alphanumeric("abqrst:uvwxyz"));
     cr_assert(!is_alphanumeric("ABC!DEFGXYZ"));
     cr_assert(!is_alphanumeric("!=%+"));
+    cr_assert(!is_alphanumeric("[quoicoubeh]"));
+    cr_assert(!is_alphanumeric("{patate}"));
+    cr_assert(!is_alphanumeric("true|false"));
 }

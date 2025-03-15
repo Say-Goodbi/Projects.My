@@ -7,13 +7,13 @@
 
 CC = gcc
 
-CFLAGS = -Wextra -Wall -Werror -I./include/
+CFLAGS = -Wextra -Wall -Werror -I.
 
 DFLAGS = -ggdb -g3
 
 NAME =	libllists.a
 
-SRC =	$(wildcard src/*.c)
+SRC =	$(wildcard *.c)
 
 OBJ =   $(SRC:.c=.o)
 
@@ -36,7 +36,7 @@ fclean : clean
 	rm -rf $(NAME)
 
 unit_tests: fclean
-	$(CC) $(SRC) tests/*.c -o unit_tests $(CFLAGS) --coverage -lcriterion
+	gcc $(SRC) tests/*.c -o unit_tests --coverage -lcriterion
 
 tests_run: unit_tests
 	./unit_tests

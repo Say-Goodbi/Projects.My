@@ -51,7 +51,7 @@ Test(freef, freeing_everything_and_nothing_with_lambda)
 
     char *str = malloc(sizeof(char)* 1000);
     freef_add("y", &mfree_array);
-    freef("l:l:y f a:a:a:f", list, str, MVP);
+    freef("l:l:y f a:a:a:f", &list, &str, &MVP);
     freeflags_free();
 }
 
@@ -61,7 +61,11 @@ Test(freef, stop_freeing_where_null)
     char *str = NULL;
     char *u = malloc(1);
 
-    freef("a f f", arr, str, u);
+    freef("a f f", &arr, &str, &u);
+    freef("a f f", &arr, &str, NULL);
+    cr_assert(arr == NULL);
+    cr_assert(str == NULL);
+    cr_assert(u == NULL);
     freeflags_free();
 }
 

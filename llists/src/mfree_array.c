@@ -7,16 +7,16 @@
 
 #include "llists.h"
 
-void mfree_array(llist_t *subfrees, void *target)
+void mfree_array(llist_t *subfrees, void **target_ptr)
 {
     mfree_t sfree = subfrees->next ? ((mfree_t)(subfrees->data)) : &mfree_dft;
-    void **arr = (void **)target;
+    void **arr = (void **)(*target_ptr);
 
-    if (!target)
+    if (!arr)
         return;
     while (*arr) {
-        sfree(subfrees->next, *arr);
+        sfree(subfrees->next, arr);
         arr++;
     }
-    free(target);
+    mfree_dft(NULL, target_ptr);
 }

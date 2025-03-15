@@ -50,20 +50,23 @@ Test(superfree, freeing_things_and_nothing_with_lambda)
     push_to_list((llist_t **)&list->data, NULL);
 
     char *str = malloc(sizeof(char)* 1000);
-    freef_add("y", &mfree_array);
-    superfree("l:l:y", list);
-    superfree("f", str);
-    superfree("a:a:a:f", MVP);
+    freef_add("y", (void *)&mfree_array);
+    superfree("l:l:y", (void *)&list);
+    superfree("f", (void *)&str);
+    superfree("a:a:a:f", (void *)&MVP);
     freeflags_free();
 }
 
 Test(superfree, not_freeing_null)
 {
     char *str = malloc(1);
+    char *null = NULL;
 
-    superfree(NULL, str);
+    superfree(NULL, (void **)&str);
+    superfree("f", (void **)&null);
+    superfree("f", (void **)&str);
+    superfree("f", (void **)&str);
     superfree("f", NULL);
-    superfree("f", str);
 }
 
 Test(free_a_fflag, not_freeing_null_flag)

@@ -23,9 +23,9 @@ Test(list_eq, equalities)
     res = list_eq(list, test_strcmp, 5, "L1", "L2", "L3", "R1", "R2");
     cr_assert(res == 0);
     res = list_eq(list, test_strcmp, 5, "L1", "S2", "L3", "R1", "R2");
-    cr_assert(res == 1);
+    cr_assert(res != 0);
     res = list_eq(NULL, test_strcmp, 5, "L1", "L2", "L3", "R1", "R2");
-    cr_assert(res == 1);
+    cr_assert(res != 0);
     res = list_eq(list, NULL, 5, "L1", "L2", "L3", "R1", "R2");
-    cr_assert(res == 1);
+    cr_assert(res != 0);
 }

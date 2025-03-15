@@ -14,9 +14,9 @@ Test(my_calloc, simple_calloc)
 
     if (!ptr || !ptr2)
         return;
-    for (int i = 0; i < sizeof(char) * 1; i++)
+    for (size_t i = 0; i < sizeof(char) * 1; i++)
         cr_assert_eq(ptr[i], 0);
-    for (int i = 0; i < sizeof(int) * 1; i++)
+    for (size_t i = 0; i < sizeof(int) * 1; i++)
         cr_assert_eq(ptr[i], 0);
     free(ptr);
     free(ptr2);

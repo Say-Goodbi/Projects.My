@@ -22,11 +22,17 @@ Test(word_array_to_list, simple_wordlist)
 
 Test(word_array_to_list, no_wordlist)
 {
-    char *str = "  ";
     char *str2 = NULL;
+    char *str3 = "Calloc fails.";
     char **array = str_to_word_array(str2, " ");
     llist_t *wordlist = word_array_to_list(array);
 
     cr_assert(array == NULL);
     cr_assert(wordlist == NULL);
+    array = str_to_word_array(str3, "c");
+    cr_assert(array != NULL);
+    calloc_failure_countdown(true, 1);
+    wordlist = word_array_to_list(array);
+    cr_assert(wordlist == NULL);
+    calloc_failure_countdown(true, -1);
 }

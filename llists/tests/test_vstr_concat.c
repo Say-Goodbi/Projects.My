@@ -21,10 +21,6 @@ Test(vstr_concat, concatening_strings_together)
     cr_assert(vstr_concat(0, "My", " mistake", NULL, " again") == NULL);
     string3 = vstr_concat(4, "", "", "", "");
     cr_assert_str_eq(string3, "");
-    free(string3);
     string3 = vstr_concat(1, "Lol");
     cr_assert(string3, "Lol");
-    free(string);
-    free(string2);
-    free(string3);
 }

@@ -7,7 +7,9 @@
 
 #include "tests.h"
 
-Test(my_strndup, failing_malloc)
+Test(my_strndup, failed_my_strdup)
 {
-    cr_assert(my_strndup("fail", 2222222222) == NULL);
+    calloc_failure_countdown(true, 0);
+    cr_assert(my_strndup("fail", 2) == NULL);
+    calloc_failure_countdown(true, -1);
 }

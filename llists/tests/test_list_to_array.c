@@ -7,7 +7,7 @@
 
 #include "tests.h"
 
-Test(list_to_array, simple_nodes, .init = redirect_all_std)
+Test(list_to_array, simple_nodes)
 {
     llist_t *list = NULL;
     char **array = NULL;
@@ -23,10 +23,23 @@ Test(list_to_array, simple_nodes, .init = redirect_all_std)
     free(array);
 }
 
-Test(list_to_array, no_nodes, .init = redirect_all_std)
+Test(list_to_array, no_nodes)
 {
     llist_t *list = NULL;
     char **array = (char **)list_to_array(list);
 
     cr_assert(array == NULL);
+}
+
+Test(list_to_array, failed_list_to_array)
+{
+    llist_t *list = NULL;
+    char **array = NULL;
+
+    append_to_list(&list, "data");
+    cr_assert_str_eq((char *)list->data, "data");
+    calloc_failure_countdown(true, 0);
+    array = (char **)list_to_array(list);
+    cr_assert(array == NULL);
+    calloc_failure_countdown(true, -1);
 }

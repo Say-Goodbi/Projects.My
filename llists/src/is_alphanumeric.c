@@ -16,13 +16,14 @@ bool is_alpha_char(char c)
     return false;
 }
 
+bool is_numeric_char(char c)
+{
+    return (c >= '0' && c <= '9');
+}
+
 bool is_alphanumeric_char(char c)
 {
-    if (is_alpha_char(c))
-        return true;
-    if (c >= '0' && c <= '9')
-        return true;
-    return false;
+    return is_alpha_char(c) | is_numeric_char(c);
 }
 
 bool is_alphanumeric(char *str)

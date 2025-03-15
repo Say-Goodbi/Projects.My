@@ -21,7 +21,7 @@ char *concat(size_t flen, char **wa)
         i += my_strlen(wa[word_i]);
         word_i++;
     }
-    freef("a", wa);
+    freef("a", &wa);
     return str;
 }
 

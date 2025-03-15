@@ -15,8 +15,30 @@ Test(freef_add, freeing_with_custom_flags)
     arr[1] = str_to_word_array("o z e f", " ");
     arr[2] = str_to_word_array(" ok lm ", " ");
 
-    freef_add("calimero", &mfree_array);
     freef_add("2025", NULL);
-    freef("2025 calimero:a:k47", str, arr);
+    calloc_failure_countdown(true, 1);
+    freef_add("calimero", &mfree_array);
+    freef_add("calimero", &mfree_array);
+    calloc_failure_countdown(true, -1);
+    freef_add(NULL, NULL);
+    freef_add("2025", NULL);
+    freef_add(NULL, &mfree_array);
+    freef_add("calimero", &mfree_array);
+    freef("2025 calimero:a:k47", &str, &arr);
     freeflags_free();
 }
+
+Test(freef_add, custom_free_flag_fail)
+{
+    calloc_failure_countdown(true, 0);
+    freef_add("2025", NULL);
+    freeflags_free();
+    calloc_failure_countdown(true, 1);
+    freef_add("2025", NULL);
+    freeflags_free();
+    calloc_failure_countdown(true, 2);
+    freef_add("2025", NULL);
+    freeflags_free();
+    calloc_failure_countdown(true, -1);
+}
+

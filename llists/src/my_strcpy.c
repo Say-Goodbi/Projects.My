@@ -16,3 +16,13 @@ char *my_strcpy(char *dest, char *src)
     }
     return dest;
 }
+
+char *my_strncpy(char *dest, char *src, size_t n)
+{
+    if (!src)
+        return dest;
+    for (size_t i = 0; src[i] && i < n; i++) {
+        dest[i] = src[i];
+    }
+    return dest;
+}

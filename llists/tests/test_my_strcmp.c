@@ -22,6 +22,7 @@ Test(my_strcmp, my_strcmp)
     cr_assert(my_strcmp(s3, s2) == strcmp(s3, s2));
     cr_assert(my_strcmp(s4, s4) == strcmp(s4, s4));
     cr_assert(my_strcmp(s3, s5) == strcmp(s3, s5));
+    cr_assert(my_strcmp(s5, s3) == strcmp(s5, s3));
     cr_assert(my_strcmp(s6, s5) == strcmp(s6, s5));
     cr_assert(my_strcmp(s1, s5) == strcmp(s1, s5));
     cr_assert(my_strcmp(s4, s1) == strcmp(s4, s1));
